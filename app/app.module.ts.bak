@@ -1,0 +1,24 @@
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent }  from './app.component';
+import { HomeComponent } from './home.component';
+import { NotfoundComponent } from './notfound.component';
+
+import { MessagesModule } from './messages/messages.module';
+import { PhotosModule } from './photos/photos.module';
+import { photoRouting } from './photos/photos.routing';
+import { routing } from './app.routing';
+
+import { AuthGuard } from './auth-guard.service';
+import { AuthService } from './auth.service';
+import { UnsavedGuard } from './unsaved-guard.service';
+
+@NgModule({
+  // photoRouting should come before main/root routing.
+  imports:      [ BrowserModule, MessagesModule, PhotosModule, photoRouting, routing ],
+  declarations: [ AppComponent, HomeComponent, NotfoundComponent ],
+  providers:    [ AuthGuard, AuthService, UnsavedGuard ],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }

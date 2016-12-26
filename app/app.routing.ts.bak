@@ -1,0 +1,13 @@
+import { Router, RouterModule } from '@angular/router';
+
+import { HomeComponent } from './home.component';
+import { MessagesComponent } from './messages/messages.component';
+import { NotfoundComponent} from './notfound.component';
+import { AuthGuard } from './auth-guard.service';
+import { UnsavedGuard } from './unsaved-guard.service';
+
+export const routing = RouterModule.forRoot([
+    {path: '', component: HomeComponent },
+    {path: 'messages', component: MessagesComponent, canActivate: [AuthGuard], canDeactivate: [UnsavedGuard] },
+    {path: '**', component: NotfoundComponent }
+]);
