@@ -8,11 +8,13 @@ import { UsersService } from './users.service';
     selector: 'users',
     templateUrl: 'app/users/users.component.html'
 })
-export class UsersMainComponent {
-    users: {};
+export class UsersMainComponent  {
+    
+    users: any[];
     isLoading = true;
+    
 
-    constructor( private _service: UsersService){
+    constructor( private _service: UsersService ){
         _service.getUsers().subscribe(
             res => {
                 this.users = res;
@@ -20,7 +22,25 @@ export class UsersMainComponent {
                 this.isLoading = false;
             }
          );
-        
     }
+
+    delete( user: any ){
+
+        if( confirm("Do you want to delete user - "+user.name+" ?") )
+        {
+            var index = this.users.indexOf(user);
+            // this will remove one object from the specified index
+            this.users.splice(index,1);
+
+            this._service.deleteUser(user.id).subscribe(
+                null,
+                error => {
+                    alert('Sorry, cound not delete the data.');
+                    this.users.splice(index, 0, user );
+                }
+            );
+        }
+    }
+    
 }
 
