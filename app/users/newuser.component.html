@@ -1,0 +1,58 @@
+
+<div class='col-md-6 col-lg-6 well' [formGroup]="myForm" (ngSubmit)="saveUser(myForm)">
+    <form>
+        <h2>Create New User</h2>
+
+        <fieldset>
+            <legend> User </legend>
+
+            <div class='form-group'>
+                <label for='name'>Name</label>
+                <input type='input' name='name' id='name' class='form-control'
+                 [formControl]='name' placeholder="Enter Name" />
+                 
+                 <div *ngIf="name.touched && name.hasError('required')"  class='alert alert-danger' >
+                     Name is required.
+                 </div>
+            </div>
+            <div class='form-group'>
+                <label for='email'>Email</label>
+                <input type='input' name='email' id='email' class='form-control' 
+                [formControl]='email' placeholder="Enter Email" />
+                <div *ngIf="email.touched && email.errors" class="alert alert-danger">
+                    <div *ngIf="email.hasError('required')" >
+                        Email is Required.
+                    </div>
+                    <div *ngIf="email.hasError('invalidEmail')"  >
+                        Email is invalid.
+                    </div>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label for='phone'>Phone</label>
+                <input type='input' name='phone' id='phone' class='form-control'
+                 placeholder="Enter Phone" />
+            </div>
+
+        </fieldset>
+        <fieldset>
+            <legend> Address </legend>
+
+            <div class='form-group'>
+                <label for='street'>Street</label>
+                <input type='input' name='street' id='street' class='form-control' />
+            </div>
+            <div class='form-group'>
+                <label for='suit'>Suit</label>
+                <input type='input' name='suit' id='suit' class='form-control' />
+            </div>
+            <div class='form-group'>
+                <label for='zip'>Zipcode</label>
+                <input type='input' name='zip' id='zip' class='form-control' />
+            </div>
+        </fieldset>
+
+        <button type='submit' name='saveuser' class='btn btn-primary'  
+        [disabled]='!myForm.valid'>Save User</button>
+    </form>
+</div>

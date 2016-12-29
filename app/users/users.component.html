@@ -1,0 +1,28 @@
+
+<html>
+        <h1>Users</h1>
+
+        <a href="users/newuser" class="btn btn-primary">Add User</a>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Email </th>
+                    <th> Edit </th>
+                    <th> Delete </th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let user of users">
+                <div *ngIf="isLoading">
+                    <i class="fa fa-spinner fa-20x"> </i>
+                </div>
+                <tr>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td> <i class="glyphicon glyphicon-edit"></i></td>
+                    <td><i class="glyphicon glyphicon-remove"></i></td>
+                </tr>
+            </tbody>
+        </table>
+</html>
