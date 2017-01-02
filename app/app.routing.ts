@@ -2,7 +2,7 @@ import { Router, RouterModule } from '@angular/router';
 import { PostsMainComponent } from './posts/postsmain.component';
 import { UsersMainComponent } from './users/usersmain.component';
 import { NewUserComponent } from './users/newuser.component'; 
-import { UnsavedGuard } from './util/unsaveguard';
+import { UnsavedGuard } from './shared/unsaveguard';
 import { HomeComponent } from './home.component';
 import { NotFoundComponent } from './notfound.component';
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, 
          AbstractControl, Validators } from '@angular/forms';
 import { CustomValidator } from '../validators/customvalidator';
-import { FormComponent } from '../util/formcomponent';
+import { FormComponent } from '../shared/formcomponent';
 import { UsersService } from './users.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';

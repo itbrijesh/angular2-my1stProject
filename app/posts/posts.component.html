@@ -1,0 +1,49 @@
+
+
+<h1>Posts</h1>
+<div class='col-md-12'>
+    <div class='col-md-6'>
+        
+        <select class='form-control' #u (change)="showPosts(u.value)" >
+            <option value='0'>Select a User to see list of posts.</option>
+            <option *ngFor="let user of users" value='{{user.id}}'>
+                {{user.name}}
+            </option>
+        </select>
+
+        <pagination [items]='posts' (page-changed)='OnPageChanged($event)' ></pagination>
+        
+        <ul class='list-group postsStyle'>
+            <li class='list-group-item' *ngFor="let post of pagedPosts" 
+                (click)='showPostDetail(post)' [class.active]='currentPost == post' >
+                {{post.title}}
+            </li>
+        </ul>
+        
+    </div>
+    <div *ngIf="panelTitle"  class='col-md-6'>
+        <div class="panel panel-default">
+            <div class="panel-heading bgcolor">
+                <h3 class="panel-title">{{panelTitle}}</h3>
+            </div>
+            <div class="panel-body">
+                {{panelBody}}
+            </div>
+            <hr>
+            
+            <div class="media" *ngFor="let comment of comments" >
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object mediaImg" 
+                        src="http://lorempixel.com/80/80/people/?random=1" >
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">{{comment.name}}</h4>
+                    {{comment.body}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
